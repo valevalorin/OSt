@@ -9,12 +9,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
+using System.IO;
 
 namespace OSt
 {
     public partial class Primary : Form
     {
-         private EventHook ev;
+        private EventHook ev;
+        private Process soundAgentProcess;
+        private SupervisedJob job;
+        
 
         [DllImport("user32.dll")]
         static extern IntPtr GetForegroundWindow();
@@ -42,7 +46,21 @@ namespace OSt
         public Primary()
         {
             ev = new EventHook(WinEventProc, EventHook.WINEVENT_OUTOFCONTEXT, EventHook.EVENT_SYSTEM_FOREGROUND);
+            job = new SupervisedJob();
+
             InitializeComponent();
+
+            soundAgentProcess = new Process();
+            ProcessStartInfo soundAgentProcessInfo = new ProcessStartInfo();
+            soundAgentProcessInfo.CreateNoWindow = true;
+            //soundAgentProcessInfo.RedirectStandardOutput = true;
+            soundAgentProcessInfo.UseShellExecute = false;
+            soundAgentProcessInfo.FileName = "ost-sound-agent.exe";
+            soundAgentProcessInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            soundAgentProcess.StartInfo = soundAgentProcessInfo;
+            soundAgentProcess.Start();
+
+            job.AddProcess(soundAgentProcess.Handle);
         }
 
 
@@ -53,10 +71,20 @@ namespace OSt
 
         public void WinEventProc(IntPtr hWinEventHook, uint eventType, IntPtr hwnd, int idObject, int idChild, uint dwEventThread, uint dwmsEventTime)
         {
-            IntPtr handle = GetForegroundWindow();
-            GetWindowThreadProcessId(handle, out uint processId);
+            GetWindowThreadProcessId(hwnd, out uint processId);
             Process p = Process.GetProcessById((int)processId);
             Log.Text += p.ProcessName + "\r\n";
+
+            Process hookActorProcess = new Process();
+            ProcessStartInfo hookActorProcessInfo = new ProcessStartInfo();
+            hookActorProcessInfo.CreateNoWindow = true;
+            hookActorProcessInfo.RedirectStandardOutput = true;
+            hookActorProcessInfo.UseShellExecute = false;
+            hookActorProcessInfo.FileName = "ost-hook-actor.exe";
+            hookActorProcessInfo.Arguments = "'" + p.ProcessName + "'";
+            hookActorProcess.StartInfo = hookActorProcessInfo;
+            hookActorProcess.Start();
+
         } 
     }
 }
