@@ -70,6 +70,11 @@ namespace OSt
 
         }
 
+        public void Close(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
         public void WinEventProc(IntPtr hWinEventHook, uint eventType, IntPtr hwnd, int idObject, int idChild, uint dwEventThread, uint dwmsEventTime)
         {
             GetWindowThreadProcessId(hwnd, out uint processId);
@@ -87,7 +92,7 @@ namespace OSt
             hookActorProcessInfo.RedirectStandardOutput = true;
             hookActorProcessInfo.UseShellExecute = false;
             hookActorProcessInfo.FileName = "ost-hook-actor.exe";
-            hookActorProcessInfo.Arguments = "'" + p.ProcessName + "'";
+            hookActorProcessInfo.Arguments = "" + p.ProcessName + "";
             hookActorProcess.StartInfo = hookActorProcessInfo;
             hookActorProcess.Start();
 
