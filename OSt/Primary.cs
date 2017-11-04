@@ -17,6 +17,7 @@ namespace OSt
     {
         private EventHook ev;
         private Process soundAgentProcess;
+        private Process hookActorProcess = null;
         private SupervisedJob job;
         
 
@@ -54,7 +55,7 @@ namespace OSt
             ProcessStartInfo soundAgentProcessInfo = new ProcessStartInfo();
             soundAgentProcessInfo.CreateNoWindow = true;
             //soundAgentProcessInfo.RedirectStandardOutput = true;
-            soundAgentProcessInfo.UseShellExecute = false;
+            //soundAgentProcessInfo.UseShellExecute = false;
             soundAgentProcessInfo.FileName = "ost-sound-agent.exe";
             soundAgentProcessInfo.WindowStyle = ProcessWindowStyle.Hidden;
             soundAgentProcess.StartInfo = soundAgentProcessInfo;
@@ -75,6 +76,11 @@ namespace OSt
             Process p = Process.GetProcessById((int)processId);
             Log.Text += p.ProcessName + "\r\n";
 
+            //if (this.hookActorProcess != null)
+            //{
+            //    this.hookActorProcess.Killer();
+            //}
+
             Process hookActorProcess = new Process();
             ProcessStartInfo hookActorProcessInfo = new ProcessStartInfo();
             hookActorProcessInfo.CreateNoWindow = true;
@@ -84,6 +90,9 @@ namespace OSt
             hookActorProcessInfo.Arguments = "'" + p.ProcessName + "'";
             hookActorProcess.StartInfo = hookActorProcessInfo;
             hookActorProcess.Start();
+
+            this.hookActorProcess = hookActorProcess;
+            hookActorProcess.OutputDataReceived += (sender, args) => Log.Text += args.Data.ToString() + "\r\n";
 
         } 
     }
