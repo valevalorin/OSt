@@ -72,6 +72,11 @@ namespace OSt
 
         public void Close(object sender, EventArgs e)
         {
+            Process[] mplayers = Process.GetProcessesByName("mplayer");
+            foreach(Process player in mplayers)
+            {
+                player.Kill();
+            }
             Application.Exit();
         }
 
