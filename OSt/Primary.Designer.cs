@@ -29,23 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Primary));
-            this.Log = new System.Windows.Forms.TextBox();
             this.logoImage = new System.Windows.Forms.PictureBox();
             this.exitBtn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.processList = new System.Windows.Forms.ListView();
+            this.Log = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.logoImage)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // Log
-            // 
-            this.Log.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.Log.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Log.Location = new System.Drawing.Point(0, 0);
-            this.Log.Multiline = true;
-            this.Log.Name = "Log";
-            this.Log.Size = new System.Drawing.Size(306, 557);
-            this.Log.TabIndex = 0;
-            this.Log.Visible = false;
             // 
             // logoImage
             // 
@@ -53,7 +44,7 @@
             this.logoImage.BackgroundImage = global::OSt.Properties.Resources.big_logo;
             this.logoImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.logoImage.ImageLocation = "";
-            this.logoImage.Location = new System.Drawing.Point(0, 32);
+            this.logoImage.Location = new System.Drawing.Point(12, 32);
             this.logoImage.Name = "logoImage";
             this.logoImage.Size = new System.Drawing.Size(901, 636);
             this.logoImage.TabIndex = 2;
@@ -81,11 +72,33 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel1.Controls.Add(this.processList);
+            this.panel1.Controls.Add(this.Log);
+            this.panel1.Controls.Add(this.logoImage);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(901, 668);
             this.panel1.TabIndex = 3;
+            // 
+            // processList
+            // 
+            this.processList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.processList.FullRowSelect = true;
+            this.processList.GridLines = true;
+            this.processList.Location = new System.Drawing.Point(35, 49);
+            this.processList.Name = "processList";
+            this.processList.Size = new System.Drawing.Size(206, 607);
+            this.processList.TabIndex = 4;
+            this.processList.UseCompatibleStateImageBehavior = false;
+            this.processList.View = System.Windows.Forms.View.List;
+            // 
+            // Log
+            // 
+            this.Log.Location = new System.Drawing.Point(698, 71);
+            this.Log.Name = "Log";
+            this.Log.Size = new System.Drawing.Size(186, 20);
+            this.Log.TabIndex = 3;
             // 
             // Primary
             // 
@@ -94,9 +107,7 @@
             this.AutoScroll = true;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(901, 668);
-            this.Controls.Add(this.logoImage);
             this.Controls.Add(this.exitBtn);
-            this.Controls.Add(this.Log);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -104,17 +115,18 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OSt";
             ((System.ComponentModel.ISupportInitialize)(this.logoImage)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox Log;
         private System.Windows.Forms.Button exitBtn;
         private System.Windows.Forms.PictureBox logoImage;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ListView processList;
+        private System.Windows.Forms.TextBox Log;
     }
 }
 

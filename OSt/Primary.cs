@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.IO;
+using Newtonsoft.Json.Linq;
 
 namespace OSt
 {
@@ -19,6 +20,8 @@ namespace OSt
         private Process soundAgentProcess;
         private Process hookActorProcess = null;
         private SupervisedJob job;
+        private List<Assignment> assignments;
+        private Configuration config;
         
 
         [DllImport("user32.dll")]
@@ -51,17 +54,23 @@ namespace OSt
 
             InitializeComponent();
 
-            soundAgentProcess = new Process();
+            this.soundAgentProcess = new Process();
             ProcessStartInfo soundAgentProcessInfo = new ProcessStartInfo();
             soundAgentProcessInfo.CreateNoWindow = true;
             //soundAgentProcessInfo.RedirectStandardOutput = true;
             //soundAgentProcessInfo.UseShellExecute = false;
             soundAgentProcessInfo.FileName = "ost-sound-agent.exe";
             soundAgentProcessInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            soundAgentProcess.StartInfo = soundAgentProcessInfo;
-            soundAgentProcess.Start();
+            this.soundAgentProcess.StartInfo = soundAgentProcessInfo;
+            this.soundAgentProcess.Start();
 
             job.AddProcess(soundAgentProcess.Handle);
+
+            //load config
+            //LoadConfig();
+            this.config = Configuration.Load();
+            config.Current.crossFade.seconds = 1.3;
+            config.SaveToDisk();
         }
 
 
@@ -88,7 +97,7 @@ namespace OSt
 
             //if (this.hookActorProcess != null)
             //{
-            //    this.hookActorProcess.Killer();
+            //    this.hookActorProcess.Kill();
             //}
 
             Process hookActorProcess = new Process();
@@ -103,7 +112,6 @@ namespace OSt
 
             this.hookActorProcess = hookActorProcess;
             hookActorProcess.OutputDataReceived += (sender, args) => Log.Text += args.Data.ToString() + "\r\n";
-
-        } 
+        }
     }
 }

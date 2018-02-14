@@ -1,9 +1,9 @@
 {
 	"crossFade": {
-		"seconds": 2,
+		"seconds": 1,
 		"framerate": 60
 	},
-	"transitionBuffer": 1.5,
+	"transitionBuffer": 0.5,
 	"loadedPackages": [
 	],
 	"assignments": [
