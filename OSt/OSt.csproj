@@ -51,6 +51,12 @@
     <Compile Include="Assignment.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="EventHook.cs" />
+    <Compile Include="AddProcessModal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddProcessModal.Designer.cs">
+      <DependentUpon>AddProcessModal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Primary.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,6 +67,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SupervisedJob.cs" />
     <Compile Include="Track.cs" />
+    <EmbeddedResource Include="AddProcessModal.resx">
+      <DependentUpon>AddProcessModal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Primary.resx">
       <DependentUpon>Primary.cs</DependentUpon>
     </EmbeddedResource>

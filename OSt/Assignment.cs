@@ -10,11 +10,22 @@ namespace OSt
     {
         public string ProcessName { get; set; }
         public Track Track { get; set; }
+        public List<Track> Tracks { get; set; }
 
         public Assignment (string processName, string trackPath)
         {
             this.ProcessName = processName;
             this.Track = new Track(trackPath);
+        }
+
+        public Assignment(string processName, List<string> trackPaths)
+        {
+            this.ProcessName = processName;
+            foreach(string trackPath in trackPaths)
+            {
+                Track t = new Track(trackPath);
+                this.Tracks.Add(t);
+            }
         }
 
         public override string ToString()
