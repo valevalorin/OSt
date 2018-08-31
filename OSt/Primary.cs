@@ -1,16 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
-using System.IO;
-using Newtonsoft.Json.Linq;
 
 namespace OSt
 {
@@ -112,6 +106,28 @@ namespace OSt
 
             this.hookActorProcess = hookActorProcess;
             hookActorProcess.OutputDataReceived += (sender, args) => Log.Text += args.Data.ToString() + "\r\n";
+        }
+
+        public void processSelected()
+        {
+            trackList.Items.Clear();
+            ListViewItem selection = processList.SelectedItems[0];
+            string processName = selection.Text;
+            Assignment a = config.getAssignment(processName);
+            foreach (Track track in a.Tracks)
+            {
+                trackList.Items.Add(track.ToString());
+            }
+        }
+
+        public void addProcess()
+        {
+            
+        }
+
+        private void openFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            
         }
     }
 }
