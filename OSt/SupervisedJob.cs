@@ -65,7 +65,7 @@ namespace OSt
     public class SupervisedJob : IDisposable
     {
         [DllImport("kernel32.dll", CharSet = CharSet.Unicode)]
-        static extern IntPtr CreateJobObject(object a, string lpName);
+        static extern IntPtr CreateJobObject(IntPtr a, string lpName);
 
         [DllImport("kernel32.dll")]
         static extern bool SetInformationJobObject(IntPtr hJob, JobObjectInfoType infoType, IntPtr lpJobObjectInfo, uint cbJobObjectInfoLength);
@@ -82,7 +82,7 @@ namespace OSt
 
         public SupervisedJob()
         {
-            m_handle = CreateJobObject(null, null);
+            m_handle = CreateJobObject(IntPtr.Zero, null);
 
             JOBOBJECT_BASIC_LIMIT_INFORMATION info = new JOBOBJECT_BASIC_LIMIT_INFORMATION();
             info.LimitFlags = 0x2000;

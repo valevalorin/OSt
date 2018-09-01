@@ -9,21 +9,21 @@
 	"assignments": [
 		{
 			"processName": "chrome",
-			"package": "D:\\pokemon\\package.ostmanifest",
-			"track": "route_29.mp3"
+			"package": "C:\\ost\\package.ostmanifest",
+			"track": "cycling.mp3"
 		},
 		{
 			"processName": "OSt",
-			"package": "D:\\pokemon\\package.ostmanifest",
-			"track": "olivine_city.mp3"
+			"package": "C:\\ost\\package.ostmanifest",
+			"track": "palette_town.mp3"
 		},
 		{
 			"processName": "sublime_text",
-			"package": "D:\\pokemon\\package.ostmanifest",
-			"track": "olivine_city.mp3"
+			"package": "C:\\ost\\package.ostmanifest",
+			"track": "lavender_town.mp3"
 		}
 	],
-	"passThroughs": [
-		"DualMonitor"
+	"nonPassThroughs": [
+		"devenv"
 	]
 }

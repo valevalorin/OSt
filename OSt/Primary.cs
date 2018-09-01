@@ -53,6 +53,7 @@ namespace OSt
             soundAgentProcessInfo.CreateNoWindow = true;
             //soundAgentProcessInfo.RedirectStandardOutput = true;
             //soundAgentProcessInfo.UseShellExecute = false;
+            Console.WriteLine(soundAgentProcessInfo.WorkingDirectory);
             soundAgentProcessInfo.FileName = "ost-sound-agent.exe";
             soundAgentProcessInfo.WindowStyle = ProcessWindowStyle.Hidden;
             this.soundAgentProcess.StartInfo = soundAgentProcessInfo;
@@ -110,14 +111,14 @@ namespace OSt
 
         public void processSelected()
         {
-            trackList.Items.Clear();
-            ListViewItem selection = processList.SelectedItems[0];
-            string processName = selection.Text;
-            Assignment a = config.getAssignment(processName);
-            foreach (Track track in a.Tracks)
-            {
-                trackList.Items.Add(track.ToString());
-            }
+            //trackList.Items.Clear();
+            //ListViewItem selection = processList.SelectedItems[0];
+            //string processName = selection.Text;
+            //Assignment a = config.getAssignment(processName);
+            //foreach (Track track in a.Tracks)
+            //{
+            //    trackList.Items.Add(track.ToString());
+            //}
         }
 
         public void addProcess()

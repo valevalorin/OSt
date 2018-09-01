@@ -19,7 +19,7 @@ namespace OSt
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Parent.
+            //this.Parent.
         }
     }
 }

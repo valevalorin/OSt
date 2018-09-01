@@ -1,1 +1,2 @@
+// This is for the binding library, the actual version of the player I'm unsure of
 // "mplayer": "^2.1.0"
