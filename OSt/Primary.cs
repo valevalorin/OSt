@@ -88,7 +88,7 @@ namespace OSt
         {
             GetWindowThreadProcessId(hwnd, out uint processId);
             Process p = Process.GetProcessById((int)processId);
-            Log.Text += p.ProcessName + "\r\n";
+            //Log.Text += p.ProcessName + "\r\n";
 
             //if (this.hookActorProcess != null)
             //{
@@ -106,7 +106,7 @@ namespace OSt
             hookActorProcess.Start();
 
             this.hookActorProcess = hookActorProcess;
-            hookActorProcess.OutputDataReceived += (sender, args) => Log.Text += args.Data.ToString() + "\r\n";
+            //hookActorProcess.OutputDataReceived += (sender, args) => Log.Text += args.Data.ToString() + "\r\n";
         }
 
         public void processSelected()

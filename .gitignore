@@ -291,3 +291,4 @@ __pycache__/
 dist/**
 ost-hook-actor.exe
 ost-sound-agent.exe
+OSt-*.zip

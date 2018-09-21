@@ -4,23 +4,43 @@
 		"framerate": 60
 	},
 	"transitionBuffer": 0.5,
-	"loadedPackages": [
-	],
+	"trackHome": "C:\\ost\\",
+	"multiMode": {
+		"shuffle": "variety",
+		"loop": true
+	},
 	"assignments": [
 		{
-			"processName": "chrome",
-			"package": "C:\\ost\\package.ostmanifest",
-			"track": "cycling.mp3"
+			"processName": "netbeans64",
+			"tracks": [
+				{
+					"track": "cycling.mp3"
+				},
+				{
+					"track": "trainer_battle_1.mp3"
+				},
+				{
+					"track": "bug_catching_contest.mp3"
+				}
+			]
 		},
 		{
 			"processName": "OSt",
-			"package": "C:\\ost\\package.ostmanifest",
-			"track": "palette_town.mp3"
+			"track": "lavender_town.mp3"
 		},
 		{
 			"processName": "sublime_text",
-			"package": "C:\\ost\\package.ostmanifest",
-			"track": "lavender_town.mp3"
+			"tracks": [
+				{
+					"track": "gyrados_lake.mp3"
+				},
+				{
+					"track": "casino.mp3"
+				},
+				{
+					"track": "national_park.mp3"
+				}
+			]
 		}
 	],
 	"nonPassThroughs": [
