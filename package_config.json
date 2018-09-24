@@ -1,0 +1,21 @@
+{
+	"crossFade": {
+		"seconds": 1,
+		"framerate": 60
+	},
+	"transitionBuffer": 0.5,
+	"trackHome": "C:\\Users\\Me\\Music",
+	"assignments": [
+		{
+			"processName": "chrome",
+			"track": "<insert track path>"
+		}
+		{
+			"processName": "sublime_text",
+			"track": "<insert track path>"
+		}
+	],
+	"nonPassThroughs": [
+		"spotify"
+	]
+}
